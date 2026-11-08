@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>고동현의 궤도</title>
+<meta name="description" content="그로스 퍼포먼스 마케터 고동현. 검색 광고에서 퍼널 전체, AI 에이전트 팀까지 2024년부터 지금까지의 기록.">
+<meta property="og:title" content="고동현 · 그로스 퍼포먼스 마케터">
+<meta property="og:description" content="광고를 읽는 감각에, AI라는 엔진을 달았습니다.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+:root{
+  --blue:#3557F5;--blue2:#2440D8;--deep:#0A1238;--deep2:#121C52;
+  --ink:#1B2252;--soft:#C9D3FF;--mute:#8C98D6;
+  --yel:#FFE14D;--line:rgba(255,255,255,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Pretendard Variable",Pretendard,-apple-system,sans-serif;background:var(--deep);color:#fff;letter-spacing:-.02em;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* 맨 위 진행 막대 */
+#prog{position:fixed;left:0;top:0;height:4px;width:100%;background:linear-gradient(90deg,var(--yel),#FF9F43);transform-origin:0 50%;transform:scaleX(0);z-index:50;box-shadow:0 0 12px rgba(255,225,77,.7)}
+
+/* 별 */
+.stars{position:absolute;left:0;right:0;top:-10%;bottom:-10%;overflow:hidden;pointer-events:none;will-change:transform}
+.stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;animation:tw 3s ease-in-out infinite}
+.stars i.b{width:5px;height:5px;box-shadow:0 0 8px #fff}
+@keyframes tw{0%,100%{opacity:.25;transform:scale(.7)}50%{opacity:1;transform:scale(1.15)}}
+.shoot{position:absolute;width:140px;height:2px;background:linear-gradient(90deg,#fff,transparent);border-radius:2px;opacity:0;animation:shoot 7s linear infinite}
+@keyframes shoot{0%{opacity:0;transform:translate(0,0) rotate(-28deg)}3%{opacity:1}12%{opacity:0;transform:translate(-460px,240px) rotate(-28deg)}100%{opacity:0}}
+
+/* 우주인 */
+.astro{display:block;overflow:visible;width:100%}
+.astro .float{animation:float 5s ease-in-out infinite;transform-origin:160px 200px}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-16px) rotate(3deg)}}
+.astro .wave{animation:wave 1.6s ease-in-out infinite;transform-origin:212px 200px}
+@keyframes wave{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(14deg)}}
+.flame{animation:flame .18s ease-in-out infinite alternate;transform-origin:center top}
+@keyframes flame{from{transform:scaleY(.75);opacity:.8}to{transform:scaleY(1.15);opacity:1}}
+.astro .item{opacity:0;transform:scale(.3) rotate(-30deg);transform-origin:72px 246px;transition:opacity .35s,transform .55s cubic-bezier(.34,1.56,.64,1)}
+.astro .item.on{opacity:1;transform:none}
+
+/* 첫 화면 */
+.hero{position:relative;min-height:100vh;background:radial-gradient(120% 80% at 50% 0%,#4F6DFF 0%,var(--blue) 38%,var(--blue2) 70%,#18299A 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 16px 120px;overflow:hidden}
+#heroAstro{width:min(300px,62vw);margin-bottom:14px;position:relative;z-index:2;cursor:pointer;transform:translate(var(--hx,0px),var(--hy,0px)) rotate(var(--hr,0deg)) scale(var(--hs,1));transition:transform .3s ease-out}
+#heroAstro.spin .astro{animation:warp 1s cubic-bezier(.3,.7,.3,1)}
+.hin{position:relative;z-index:2;will-change:transform,opacity}
+.eyebrow{display:inline-block;font-size:15px;font-weight:700;color:var(--blue2);background:var(--yel);border-radius:99px;padding:7px 16px;margin-bottom:18px}
+.hero h1{font-size:clamp(32px,6vw,62px);font-weight:800;line-height:1.18;letter-spacing:-.04em}
+.hero h1 span{display:inline-block;opacity:0;transform:translateY(30px);animation:up .8s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 em{font-style:normal;color:var(--yel)}
+@keyframes up{to{opacity:1;transform:none}}
+.hero p.sub{font-size:clamp(16px,2.2vw,20px);color:#E3E8FF;line-height:1.6;margin-top:18px;opacity:0;animation:up .8s .9s forwards}
+.pills{display:inline-flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px;margin-top:28px;background:#fff;border-radius:99px;padding:9px 16px;max-width:100%}
+.pills span{color:var(--ink);font-size:15px;font-weight:700;opacity:0;transform:scale(.6);animation:pop .5s cubic-bezier(.34,1.56,.64,1) forwards}
+.pills b{width:20px;height:20px;border-radius:50%;background:var(--blue);color:#fff;font-size:15px;line-height:20px;display:inline-block;opacity:0;animation:pop .4s forwards}
+@keyframes pop{to{opacity:1;transform:scale(1)}}
+.scrollhint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-size:13px;color:#DCE3FF;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2}
+.scrollhint i{width:22px;height:34px;border:2px solid #DCE3FF;border-radius:12px;position:relative}
+.scrollhint i:after{content:"";position:absolute;left:50%;top:6px;width:4px;height:7px;margin-left:-2px;border-radius:2px;background:#fff;animation:sc 1.6s infinite}
+@keyframes sc{0%{opacity:0;transform:translateY(0)}40%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
+
+/* 숫자 띠 */
+.band{background:#fff;color:var(--ink);padding:60px 16px}
+.band h2{text-align:center;font-size:clamp(24px,3.4vw,34px);font-weight:800;margin-bottom:8px}
+.band h2 em{font-style:normal;color:var(--blue)}
+.band .bs{text-align:center;color:#5B6488;font-size:16px;margin-bottom:30px}
+.nums{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.num{position:relative;border:2px solid #DCE2FF;border-radius:22px;padding:22px 16px;text-align:center;opacity:0;transform:translateY(24px) scale(.94);transition:.7s cubic-bezier(.2,.8,.2,1.2)}
+.num.in{opacity:1;transform:none}
+.num:not(:last-child):after{content:"→";position:absolute;right:-19px;top:50%;margin-top:-12px;font-size:18px;font-weight:800;color:#A9B6F5}
+.num .s{font-size:13px;font-weight:800;color:#7A84AC}
+.num .n{font-size:clamp(34px,4vw,46px);font-weight:800;color:var(--blue);letter-spacing:-.04em;margin-top:2px}
+.num .n small{font-size:.48em;font-weight:700;margin-left:2px}
+.num .t{font-size:15px;font-weight:700;margin-top:4px}
+.num .d{font-size:13px;color:#7A84AC;margin-top:3px}
+.num.top{background:var(--blue);border-color:var(--blue);color:#fff}
+.num.top .n{color:var(--yel)}.num.top .s,.num.top .d{color:#D5DDFF}
+
+/* 여정 */
+.journey{position:relative;background:linear-gradient(180deg,var(--deep2),var(--deep) 30%,#070C2A);overflow:clip}
+.jhead{position:relative;text-align:center;padding:90px 16px 20px}
+.jhead .k{color:var(--yel);font-weight:800;font-size:15px}
+.jhead h2{font-size:clamp(28px,4.4vw,44px);font-weight:800;margin-top:8px;line-height:1.25}
+.jhead p{color:var(--soft);margin-top:12px;font-size:17px}
+.jwrap{position:relative;max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;gap:48px;padding:0 24px 120px}
+.stage{position:sticky;top:0;align-self:start;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.planet{position:absolute;width:min(440px,88%);aspect-ratio:1;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-40%) scale(var(--ps,1)) rotate(var(--pr,0deg));transition:background 1s,box-shadow 1s,transform 1.1s cubic-bezier(.34,1.4,.64,1);background:radial-gradient(circle at 30% 28%,#7C95FF,#3557F5 55%,#1A2A94);box-shadow:0 0 120px rgba(79,109,255,.45)}
+.planet:before{content:"";position:absolute;left:-14%;right:-14%;top:44%;height:16%;border:4px solid rgba(255,255,255,.35);border-radius:50%;transform:rotate(-14deg)}
+.planet:after{content:"";position:absolute;width:18%;height:18%;border-radius:50%;background:rgba(0,0,0,.12);left:58%;top:60%;box-shadow:-120px -70px 0 -10px rgba(0,0,0,.08)}
+.ring{position:absolute;width:min(560px,112%);aspect-ratio:1;top:50%;left:50%;margin:calc(min(560px,112%) / -2) 0 0 calc(min(560px,112%) / -2);border:2px dashed rgba(255,255,255,.18);border-radius:50%;animation:spin 40s linear infinite}
+.sat{position:absolute;width:min(560px,112%);aspect-ratio:1;top:50%;left:50%;margin:calc(min(560px,112%) / -2) 0 0 calc(min(560px,112%) / -2);animation:spin 9s linear infinite}
+.sat i{position:absolute;left:50%;top:-9px;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:var(--yel);box-shadow:0 0 16px var(--yel)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.beams{position:absolute;top:46%;left:50%;width:0;height:0;z-index:1}
+.beams i{position:absolute;left:0;top:-1px;width:min(46vw,520px);height:3px;transform-origin:0 50%;background:linear-gradient(90deg,rgba(255,225,77,0),rgba(255,255,255,.9),rgba(255,225,77,0));opacity:0}
+.stage.jump .beams i{animation:beam .8s ease-out}
+@keyframes beam{0%{opacity:0;clip-path:inset(0 100% 0 0)}30%{opacity:1}100%{opacity:0;clip-path:inset(0 0 0 70%)}}
+.astroBox{position:relative;width:min(360px,78%);z-index:2}
+.astroBox.warp .astro{animation:warp 1s cubic-bezier(.3,.7,.3,1)}
+@keyframes warp{0%{transform:none}35%{transform:translateY(-60px) scale(.5) rotate(-220deg);opacity:.5}68%{transform:translateY(14px) scale(1.12) rotate(-360deg);opacity:1}84%{transform:translateY(-6px) scale(.97) rotate(-360deg)}100%{transform:rotate(-360deg)}}
+.badge{position:relative;z-index:3;margin-top:4px;background:#fff;color:var(--ink);border-radius:16px;padding:12px 22px;text-align:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.5);min-width:230px}
+.badge .y{font-size:13px;font-weight:800;color:var(--blue)}
+.badge .r{font-size:20px;font-weight:800;margin-top:2px}
+.badge.flip{animation:flip .55s}
+@keyframes flip{0%{transform:rotateX(0)}50%{transform:rotateX(90deg) scale(.9)}100%{transform:rotateX(0)}}
+.orbit{position:relative;z-index:3;display:flex;gap:8px;margin-top:16px}
+.orbit i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.25);transition:.4s}
+.orbit i.on{background:var(--yel);width:28px;border-radius:6px}
+
+.chapters{position:relative;padding-top:4vh}
+.chapters:before{content:"";position:absolute;left:-26px;top:0;bottom:0;width:2px;background:repeating-linear-gradient(180deg,rgba(255,225,77,.55) 0 8px,transparent 8px 18px);background-size:2px 18px;animation:dash 1s linear infinite}
+@keyframes dash{to{background-position:0 18px}}
+.ch{min-height:96vh;display:flex;align-items:center}
+.card{position:relative;width:100%;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:26px;padding:30px 28px;backdrop-filter:blur(6px);overflow:hidden;opacity:.15;transform:translateX(90px) rotate(2.5deg) scale(.94);transition:opacity .6s,transform .9s cubic-bezier(.2,.9,.25,1.15),border-color .6s}
+.ch.on .card{opacity:1;transform:none;border-color:rgba(255,225,77,.55)}
+.card .no{position:absolute;right:10px;top:-34px;font-size:170px;font-weight:900;letter-spacing:-.06em;color:rgba(255,255,255,.05);pointer-events:none;line-height:1}
+.card .yr{display:inline-block;font-size:13px;font-weight:800;color:var(--ink);background:var(--yel);border-radius:99px;padding:5px 12px}
+.card .rl{display:inline-block;font-size:13px;font-weight:700;color:var(--soft);margin-left:8px}
+.card h3{position:relative;font-size:clamp(23px,2.6vw,30px);font-weight:800;line-height:1.3;margin:14px 0 10px}
+.card p{position:relative;color:#D5DCFF;font-size:16px;line-height:1.65}
+.card ul{list-style:none;margin-top:16px;display:grid;gap:8px}
+.card li,.fr{opacity:0;transform:translateX(30px);transition:opacity .45s,transform .55s cubic-bezier(.2,.9,.3,1.3);transition-delay:calc(var(--d,0) * 90ms + 260ms)}
+.ch.on .card li,.ch.on .fr{opacity:1;transform:none}
+.card li{display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.07);border-radius:14px;padding:11px 14px;font-size:15px;font-weight:600}
+.card li b{margin-left:auto;color:var(--yel);font-weight:800;white-space:nowrap;font-size:16px}
+.card li:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--yel);flex:none}
+.card .auto{margin-top:14px;font-size:14px;color:var(--soft);border-top:1px dashed var(--line);padding-top:12px;line-height:1.6}
+.card .auto em{font-style:normal;color:#fff;font-weight:700}
+.fun{margin-top:16px;display:grid;gap:9px}
+.fr{display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:center}
+.fr .lb{font-size:14px;font-weight:800;color:var(--yel)}
+.fr .bx{background:rgba(255,255,255,.07);border-radius:14px;padding:10px 12px}
+.fr .tp{display:flex;justify-content:space-between;align-items:baseline;font-size:14.5px;font-weight:700}
+.fr .tp b{color:var(--yel);white-space:nowrap;font-size:18px;font-weight:800}
+.fr .bar{height:8px;border-radius:5px;background:rgba(255,255,255,.12);margin-top:8px;overflow:hidden}
+.fr .bar i{display:block;height:100%;width:0;border-radius:5px;background:linear-gradient(90deg,#7C95FF,var(--yel));transition:width 1.4s cubic-bezier(.2,.8,.2,1) .4s}
+.fr .fx{font-size:13px;color:var(--soft);margin-top:6px}
+.win{display:flex;justify-content:space-between;align-items:center;margin-top:12px;background:var(--yel);color:var(--ink);border-radius:16px;padding:14px 18px;font-weight:800;font-size:16px;opacity:0;transform:scale(.85);transition:.6s cubic-bezier(.34,1.56,.64,1) .9s}
+.win b{font-size:28px;letter-spacing:-.03em}
+.ch.on .win{opacity:1;transform:none}
+.next{display:flex;align-items:center;gap:12px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:15px;font-weight:700;color:var(--yel)}
+.next .ar{flex:none;width:34px;height:34px;border-radius:50%;background:var(--yel);color:var(--ink);display:grid;place-items:center;font-size:17px;font-weight:900;animation:bob 1.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(-3px)}50%{transform:translateY(4px)}}
+
+/* 마지막 */
+.final{position:relative;text-align:center;padding:110px 16px 120px;background:radial-gradient(90% 70% at 50% 100%,#3557F5,#101A5A 60%,#070C2A);overflow:hidden}
+.final h2{position:relative;font-size:clamp(28px,4.6vw,48px);font-weight:800;line-height:1.25}
+.final h2 em{font-style:normal;color:var(--yel)}
+.final p{position:relative;color:var(--soft);font-size:17px;margin-top:14px;line-height:1.6}
+.btns{position:relative;display:flex;justify-content:center;gap:10px;margin-top:30px;flex-wrap:wrap}
+.btns a{text-decoration:none;font-weight:800;font-size:17px;border-radius:16px;padding:16px 28px;transition:transform .2s,box-shadow .2s}
+.btns a:hover{transform:translateY(-3px)}
+.btns .p{background:var(--yel);color:var(--ink);box-shadow:0 10px 30px -8px rgba(255,225,77,.6)}
+.btns .s{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.3)}
+.mail{position:relative;margin-top:16px;font-size:15px;color:var(--soft)}
+.mail a{color:#fff;font-weight:700}
+.rocket{position:absolute;width:60px;height:60px;left:-80px;bottom:30%;animation:fly 9s linear infinite}
+@keyframes fly{0%{transform:translate(0,0) rotate(20deg)}100%{transform:translate(calc(100vw + 160px),-260px) rotate(20deg)}}
+footer{text-align:center;color:#5D689F;font-size:13px;padding:24px 16px 34px;background:#070C2A}
+
+@media (max-width:860px){
+  .nums{grid-template-columns:repeat(2,1fr);gap:16px}
+  .num:nth-child(2):after{display:none}
+  .jwrap{grid-template-columns:1fr;gap:0;padding:0 16px 80px}
+  .stage{height:46vh;top:0;z-index:5;background:linear-gradient(180deg,var(--deep) 80%,rgba(10,18,56,0));padding-top:6px;overflow:hidden}
+  .astroBox{width:min(190px,48vw)}
+  .planet{width:min(250px,64vw);transform:translate(-50%,-46%) scale(var(--ps,1)) rotate(var(--pr,0deg))}
+  .ring,.sat{width:min(300px,78vw);margin:calc(min(300px,78vw) / -2) 0 0 calc(min(300px,78vw) / -2)}
+  .badge{padding:7px 14px;min-width:0}
+  .badge .r{font-size:16px}
+  .orbit{margin-top:8px}
+  .chapters:before{display:none}
+  .ch{min-height:auto;padding:20px 0}
+  .card{padding:24px 20px;transform:translateX(50px) rotate(1.5deg) scale(.96)}
+  .card .no{font-size:120px;top:-20px}
+  .pills span{font-size:13.5px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero h1 span,.hero p.sub,.pills span,.pills b,.card li,.fr,.win{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+
+<!-- 우주인 그림 한 벌 (두 곳에서 다시 씀) -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <clipPath id="visor"><circle cx="160" cy="118" r="70"/></clipPath>
+    <linearGradient id="suit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E8F8"/></linearGradient>
+    <linearGradient id="fl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF6B0"/><stop offset=".5" stop-color="#FFC531"/><stop offset="1" stop-color="#FF6B3D" stop-opacity="0"/></linearGradient>
+    <symbol id="astroBody" viewBox="0 0 320 360">
+      <g class="flame"><path d="M96 280 q12 38 0 58 q-12 -20 0 -58z" fill="url(#fl)"/><path d="M224 280 q12 38 0 58 q-12 -20 0 -58z" fill="url(#fl)"/></g>
+      <rect x="74" y="148" width="172" height="134" rx="32" fill="#D3DAF2" stroke="#1B2252" stroke-width="6"/>
+      <rect x="110" y="262" width="42" height="58" rx="18" fill="url(#suit)" stroke="#1B2252" stroke-width="6"/>
+      <rect x="168" y="262" width="42" height="58" rx="18" fill="url(#suit)" stroke="#1B2252" stroke-width="6"/>
+      <path d="M110 300 h42 v8 a14 14 0 0 1 -14 14 h-14 a14 14 0 0 1 -14 -14z" fill="#9AA6D4" stroke="#1B2252" stroke-width="6"/>
+      <path d="M168 300 h42 v8 a14 14 0 0 1 -14 14 h-14 a14 14 0 0 1 -14 -14z" fill="#9AA6D4" stroke="#1B2252" stroke-width="6"/>
+      <rect x="98" y="164" width="124" height="124" rx="42" fill="url(#suit)" stroke="#1B2252" stroke-width="6"/>
+      <rect x="128" y="198" width="64" height="42" rx="11" fill="#E9EDFB" stroke="#1B2252" stroke-width="5"/>
+      <circle cx="143" cy="214" r="6" fill="#FFE14D"/><circle cx="160" cy="214" r="6" fill="#FF6B6B"/><circle cx="177" cy="214" r="6" fill="#3557F5"/>
+      <rect x="138" y="226" width="44" height="6" rx="3" fill="#B4BEE4"/>
+      <path d="M108 196 Q78 214 72 244" fill="none" stroke="#1B2252" stroke-width="40" stroke-linecap="round"/>
+      <path d="M108 196 Q78 214 72 244" fill="none" stroke="#fff" stroke-width="28" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="astroArm" viewBox="0 0 320 360">
+      <path d="M212 200 Q270 204 292 158" fill="none" stroke="#1B2252" stroke-width="40" stroke-linecap="round"/>
+      <path d="M212 200 Q270 204 292 158" fill="none" stroke="#fff" stroke-width="28" stroke-linecap="round"/>
+      <circle cx="294" cy="150" r="18" fill="#D3DAF2" stroke="#1B2252" stroke-width="6"/>
+    </symbol>
+    <symbol id="astroHead" viewBox="0 0 320 360">
+      <rect x="48" y="92" width="24" height="46" rx="9" fill="#D3DAF2" stroke="#1B2252" stroke-width="6"/>
+      <rect x="248" y="92" width="24" height="46" rx="9" fill="#D3DAF2" stroke="#1B2252" stroke-width="6"/>
+      <line x1="206" y1="26" x2="222" y2="2" stroke="#1B2252" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="224" cy="0" r="9" fill="#FFE14D" stroke="#1B2252" stroke-width="5"/>
+      <circle cx="160" cy="112" r="100" fill="url(#suit)" stroke="#1B2252" stroke-width="6"/>
+      <circle cx="160" cy="118" r="80" fill="#C9D2F0"/>
+      <circle cx="160" cy="118" r="70" fill="#0E1B4D"/>
+      <image href="face.png" x="86" y="44" width="148" height="148" clip-path="url(#visor)" preserveAspectRatio="xMidYMid slice"/>
+      <circle cx="160" cy="118" r="70" fill="none" stroke="#1B2252" stroke-width="6"/>
+      <path d="M108 86 A62 62 0 0 1 150 58" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" opacity=".7"/>
+      <circle cx="104" cy="104" r="5" fill="#fff" opacity=".7"/>
+      <circle cx="160" cy="112" r="100" fill="none" stroke="#1B2252" stroke-width="6"/>
+    </symbol>
+  </defs>
+</svg>
+
+<template id="astroTpl">
+  <svg class="astro" viewBox="-10 -20 340 380" aria-hidden="true">
+    <g class="float">
+      <use href="#astroBody" width="320" height="360"/>
+      <g class="items"></g>
+      <circle cx="72" cy="248" r="18" fill="#D3DAF2" stroke="#1B2252" stroke-width="6"/>
+      <g class="wave"><use href="#astroArm" width="320" height="360"/></g>
+      <use href="#astroHead" width="320" height="360"/>
+    </g>
+  </svg>
+</template>
+
+<!-- 첫 화면 -->
+<section class="hero" id="hero">
+  <div class="stars" id="s1"></div>
+  <div class="shoot" style="top:14%;right:-140px"></div>
+  <div class="shoot" style="top:40%;right:-140px;animation-delay:3.5s"></div>
+  <div id="heroAstro" title="눌러 보세요"></div>
+  <div class="hin" id="hin">
+    <div class="eyebrow">그로스 퍼포먼스 마케터 · 고동현</div>
+    <h1><span>광고를 읽는 감각에,</span><br><span style="animation-delay:.35s"><em>AI라는 엔진</em>을 달았습니다.</span></h1>
+    <p class="sub">고객의 마음이 끓어오르는 지점을 찾습니다.<br>막힌 퍼널은 자동화로 뚫습니다.</p>
+    <div class="pills" id="pills"></div>
+  </div>
+  <div class="scrollhint"><i></i>내려서 여정 보기</div>
+</section>
+
+<!-- 숫자 띠 -->
+<section class="band">
+  <h2>퍼널 전 단계를 <em>직접 끌어올렸습니다</em></h2>
+  <p class="bs">병원 전산과 광고 관리자 기준 숫자입니다.</p>
+  <div class="nums">
+    <div class="num"><div class="s">유입</div><div class="n" data-to="4.8" data-dec="1">0<small>배</small></div><div class="t">메타 리드</div><div class="d">월 45 → 217건</div></div>
+    <div class="num"><div class="s">상담</div><div class="n" data-to="3.8" data-dec="1">0<small>배</small></div><div class="t">통화 연결</div><div class="d">13 → 50%</div></div>
+    <div class="num"><div class="s">전환</div><div class="n" data-to="2.5" data-dec="1">0<small>배</small></div><div class="t">최종 전환</div><div class="d">월 19 → 48건</div></div>
+    <div class="num top"><div class="s">결과</div><div class="n" data-to="3.5" data-dec="1">0<small>배</small></div><div class="t">병원 매출</div><div class="d">팀장 합류 뒤</div></div>
+  </div>
+</section>
+
+<!-- 여정 -->
+<section class="journey" id="journey">
+  <div class="stars" id="s2"></div>
+  <div class="jhead">
+    <div class="k">2024 → 2026</div>
+    <h2>검색 광고 운영자에서<br>퍼널 전체를 책임지는 마케터로</h2>
+    <p>내릴 때마다 우주인이 다음 궤도로 넘어갑니다.</p>
+  </div>
+  <div class="jwrap">
+    <div class="stage" id="stage">
+      <div class="ring"></div>
+      <div class="sat"><i></i></div>
+      <div class="planet" id="planet"></div>
+      <div class="beams" id="beams"></div>
+      <div class="astroBox" id="astroBox"><div id="stageAstro"></div></div>
+      <div class="badge" id="badge"><div class="y" id="bY"></div><div class="r" id="bR"></div></div>
+      <div class="orbit" id="orbit"></div>
+    </div>
+    <div class="chapters" id="chapters"></div>
+  </div>
+</section>
+
+<!-- 마지막 -->
+<section class="final">
+  <div class="stars" id="s3"></div>
+  <svg class="rocket" viewBox="0 0 60 60"><path d="M30 4c10 8 14 20 12 34H18C16 24 20 12 30 4z" fill="#fff" stroke="#1B2252" stroke-width="3"/><circle cx="30" cy="24" r="6" fill="#3557F5" stroke="#1B2252" stroke-width="3"/><path d="M18 38l-8 10 10-2zM42 38l8 10-10-2z" fill="#FFE14D" stroke="#1B2252" stroke-width="3"/><path d="M24 40q6 16 12 0z" fill="#FF8A3D"/></svg>
+  <h2>다음 궤도를<br><em>함께 날 팀</em>을 찾습니다.</h2>
+  <p>어디서 새는지 숫자로 찾고,<br>고친 답은 자동화로 굳힙니다.</p>
+  <div class="btns"><a class="p" href="portfolio.pdf" target="_blank" rel="noopener">포트폴리오 보기</a><a class="s" href="mailto:dbtkdqk@naver.com?subject=%EA%B3%A0%EB%8F%99%ED%98%84%EB%8B%98%EA%BB%98%20%EC%97%B0%EB%9D%BD%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4">연락하기</a></div>
+  <div class="mail">메일 · <a href="mailto:dbtkdqk@naver.com">dbtkdqk@naver.com</a></div>
+</section>
+<footer>고동현 · 그로스 퍼포먼스 마케터</footer>
+
+<script>
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+// 별 뿌리기
+function stars(id,n){const el=document.getElementById(id);for(let i=0;i<n;i++){const s=document.createElement('i');if(Math.random()<.15)s.className='b';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=(Math.random()*3)+'s';s.style.animationDuration=(2+Math.random()*3)+'s';el.appendChild(s)}}
+stars('s1',70);stars('s2',150);stars('s3',60);
+
+// 손에 드는 물건
+const ITEMS=[
+ '<g><line x1="72" y1="250" x2="72" y2="170" stroke="#1B2252" stroke-width="6" stroke-linecap="round"/><path d="M74 172 h46 l-10 14 l10 14 h-46z" fill="#03C75A" stroke="#1B2252" stroke-width="5" stroke-linejoin="round"/></g>',
+ '<g><line x1="66" y1="256" x2="54" y2="276" stroke="#1B2252" stroke-width="10" stroke-linecap="round"/><circle cx="86" cy="222" r="26" fill="#CFE6FF" fill-opacity=".85" stroke="#1B2252" stroke-width="7"/><path d="M74 210 a16 16 0 0 1 14 -6" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/></g>',
+ '<g transform="rotate(-12 80 220)"><rect x="56" y="178" width="50" height="86" rx="10" fill="#1B2252"/><rect x="61" y="186" width="40" height="66" rx="5" fill="#fff"/><rect x="65" y="192" width="32" height="18" rx="3" fill="#FF6B9A"/><rect x="65" y="214" width="32" height="5" rx="2" fill="#C9D2F0"/><rect x="65" y="223" width="22" height="5" rx="2" fill="#C9D2F0"/><rect x="65" y="234" width="32" height="12" rx="4" fill="#3557F5"/></g>',
+ '<g><g transform="translate(78 220)"><path d="M-6 -30h12l2 8 8 3 7-5 9 9-5 7 3 8 8 2v12l-8 2-3 8 5 7-9 9-7-5-8 3-2 8h-12l-2-8-8-3-7 5-9-9 5-7-3-8-8-2v-12l8-2 3-8-5-7 9-9 7 5 8-3z" fill="#FFE14D" stroke="#1B2252" stroke-width="5" stroke-linejoin="round"/><circle r="10" fill="#fff" stroke="#1B2252" stroke-width="5"/></g></g>',
+ '<g><path d="M40 186 h76 l-26 34 v30 l-24 12 v-42z" fill="#FFE14D" stroke="#1B2252" stroke-width="6" stroke-linejoin="round"/><path d="M50 198 h56" stroke="#1B2252" stroke-width="4" opacity=".35"/><circle cx="60" cy="176" r="6" fill="#7C95FF"/><circle cx="80" cy="170" r="6" fill="#FF6B6B"/><circle cx="98" cy="176" r="6" fill="#03C75A"/></g>',
+ '<g><line x1="80" y1="182" x2="80" y2="168" stroke="#1B2252" stroke-width="5"/><circle cx="80" cy="164" r="6" fill="#FF6B6B" stroke="#1B2252" stroke-width="4"/><rect x="48" y="182" width="64" height="54" rx="16" fill="#9FB2FF" stroke="#1B2252" stroke-width="6"/><rect x="58" y="194" width="44" height="26" rx="9" fill="#1B2252"/><circle cx="70" cy="207" r="5" fill="#FFE14D"/><circle cx="90" cy="207" r="5" fill="#FFE14D"/><rect x="66" y="226" width="28" height="4" rx="2" fill="#1B2252"/></g>'
+];
+function astro(target){
+  const n=document.getElementById('astroTpl').content.cloneNode(true);
+  n.querySelector('.items').innerHTML=ITEMS.map((s,i)=>'<g class="item" data-i="'+i+'">'+s+'</g>').join('');
+  document.getElementById(target).appendChild(n);
+}
+astro('heroAstro');astro('stageAstro');
+document.querySelector('#heroAstro .item[data-i="5"]').classList.add('on');
+
+// 첫 화면 알약
+const P=['검색 광고','메타 광고','퍼널 그로스','자동화','AI 에이전트'];let d=1.2,h='';
+P.forEach((p,i)=>{if(i)h+='<b style="animation-delay:'+(d-.1)+'s">+</b>';h+='<span style="animation-delay:'+d+'s">'+p+'</span>';d+=.18});
+document.getElementById('pills').innerHTML=h;
+
+// 빛줄기
+const beams=document.getElementById('beams');
+for(let k=0;k<12;k++)beams.insertAdjacentHTML('beforeend','<i style="transform:rotate('+(k*30+8)+'deg);animation-delay:'+(k%3)*.06+'s"></i>');
+
+// 장 내용
+const CH=[
+ {y:'2024 – 2025',role:'검색 광고 운영자',item:1,ps:.86,pr:0,
+  pl:'radial-gradient(circle at 30% 28%,#7BF0A8,#03C75A 55%,#016B33)',glow:'rgba(3,199,90,.45)',
+  t:'네이버 로직 변화를<br>피부로 느꼈습니다',
+  p:'카페와 블로그는 네이버 흐름을 읽는 도구였습니다. 노출이 흔들리는 날을 먼저 알아챘고, 그 감각으로 파워링크 입찰을 정했습니다.',
+  li:[['파워링크 키워드','1,421개'],['경쟁 광고주 추적','3,526곳 · 매시간'],['쌓은 순위 기록','29.3만 줄'],['블로그 검색 1위','6→12개']],
+  next:'검색 수요는 잡았습니다. 다음은 병원을 비교하는 고객입니다.'},
+ {y:'2025',role:'리드 그로스 담당',item:2,ps:1,pr:50,
+  pl:'radial-gradient(circle at 30% 28%,#FFB3CF,#FF5C93 55%,#A3164F)',glow:'rgba(255,92,147,.45)',
+  t:'고객이 비교하는 곳마다<br>리드 창구를 열었습니다',
+  p:'고객은 강남언니·바비톡·여신티켓에서 병원을 비교합니다. 그 자리의 상세 페이지를 기획부터 올리기까지 맡았습니다. 메타 소재는 고객이 실제로 쓴 말로 만들었습니다.',
+  li:[['시술 플랫폼 상세 페이지','3곳 총괄'],['릴스 최고 조회','215.4만 회'],['쇼츠 최고 조회','30만 회']],
+  auto:'플랫폼 리드 <em>메신저 알림</em> · 메타 양식 <em>자동 변환</em> · <em>전환 추적</em> 직접 연결',
+  next:'리드는 늘었습니다. 그런데 매출까지 오지 않았습니다.'},
+ {y:'2026',role:'퍼포먼스 마케팅 팀장',item:4,ps:1.1,pr:110,
+  pl:'radial-gradient(circle at 30% 28%,#B9C6FF,#3557F5 55%,#1A2A94)',glow:'rgba(79,109,255,.55)',
+  t:'노출부터 매출까지,<br>새는 단계를 막았습니다',
+  p:'리드부터 수술까지 단계마다 빠지는 수를 셌습니다. 가장 많이 새는 곳부터 고쳤습니다.',
+  fun:[['유입','메타 월 리드','4.8배',100,'월 45→217건 · 고객의 말로 소재와 양식을 다시 설계'],
+       ['상담','통화 연결률','3.8배',80,'13→50% · 리드가 들어오면 바로 첫 통화 배정'],
+       ['방문','내원율','58→68%',62,'막힌 이유별 문자 · 실장 할 일 시트'],
+       ['전환','월 수술 전환','2.5배',52,'월 19→48건']],
+  win:['병원 매출','3.5배'],
+  next:'이 속도를 사람 손 없이 유지할 차례입니다.'},
+ {y:'2026',role:'AI 에이전트 팀 지휘',item:5,ps:1.2,pr:170,
+  pl:'radial-gradient(circle at 30% 28%,#E0C2FF,#8B5CF6 55%,#4A1FA3)',glow:'rgba(139,92,246,.55)',
+  t:'마케팅팀 하나 분량을<br>AI 에이전트로 돌립니다',
+  p:'키워드·경쟁사·카피·시안·심의·보고를 맡는 에이전트를 직접 설계했습니다. 반복은 AI가, 판단은 제가 합니다.',
+  li:[['직무별 AI 에이전트','6개 · 24시간'],['매일 판정하는 키워드','140개'],['입찰 조정','주 1회→매일'],['소재 시안 자동 판정','514→12건']],
+  auto:'업무보고 <em>매일 18:02 자동</em> · 쓰면서 고친 앱 배포 <em>142회</em>'}
+];
+const chEl=document.getElementById('chapters'),orbit=document.getElementById('orbit');
+CH.forEach((c,i)=>{
+  let body='',k=0;
+  if(c.li)body+='<ul>'+c.li.map(x=>'<li style="--d:'+(k++)+'">'+x[0]+'<b>'+x[1]+'</b></li>').join('')+'</ul>';
+  if(c.fun)body+='<div class="fun">'+c.fun.map(x=>'<div class="fr" style="--d:'+(k++)+'"><div class="lb">'+x[0]+'</div><div class="bx"><div class="tp">'+x[1]+'<b>'+x[2]+'</b></div><div class="bar"><i data-w="'+x[3]+'"></i></div><div class="fx">'+x[4]+'</div></div></div>').join('')+'</div>';
+  if(c.win)body+='<div class="win"><span>결과 · '+c.win[0]+'</span><b>'+c.win[1]+'</b></div>';
+  if(c.auto)body+='<div class="auto">자동화 · '+c.auto+'</div>';
+  if(c.next)body+='<div class="next"><span class="ar">↓</span>'+c.next+'</div>';
+  chEl.insertAdjacentHTML('beforeend','<div class="ch" data-i="'+i+'"><div class="card"><div class="no">0'+(i+1)+'</div><span class="yr">'+c.y+'</span><span class="rl">'+c.role+'</span><h3>'+c.t+'</h3><p>'+c.p+'</p>'+body+'</div></div>');
+  orbit.insertAdjacentHTML('beforeend','<i></i>');
+});
+
+// 장 바뀔 때 무대 바꾸기
+const stage=document.getElementById('stage'),planet=document.getElementById('planet'),box=document.getElementById('astroBox'),badge=document.getElementById('badge'),bY=document.getElementById('bY'),bR=document.getElementById('bR');
+let cur=-1;
+function replay(el,cls){el.classList.remove(cls);void el.offsetWidth;el.classList.add(cls)}
+function setStage(i){
+  if(i===cur)return;const first=cur<0;cur=i;const c=CH[i];
+  planet.style.background=c.pl;planet.style.boxShadow='0 0 160px '+c.glow;
+  planet.style.setProperty('--ps',c.ps);planet.style.setProperty('--pr',c.pr+'deg');
+  bY.textContent=c.y;bR.textContent=c.role;replay(badge,'flip');
+  if(!first&&!RM){replay(box,'warp');replay(stage,'jump')}
+  const items=document.querySelectorAll('#stageAstro .item');
+  items.forEach(g=>g.classList.remove('on'));
+  setTimeout(()=>items.forEach(g=>g.classList.toggle('on',+g.dataset.i===c.item)),first||RM?0:420);
+  orbit.querySelectorAll('i').forEach((o,k)=>o.classList.toggle('on',k===i));
+  document.querySelectorAll('.ch').forEach(ch=>ch.classList.toggle('on',+ch.dataset.i===i));
+  document.querySelectorAll('.ch[data-i="'+i+'"] .bar i').forEach(b=>b.style.width=b.dataset.w+'%');
+}
+setStage(0);
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)setStage(+e.target.dataset.i)})},{rootMargin:'-45% 0px -45% 0px'});
+document.querySelectorAll('.ch').forEach(c=>io.observe(c));
+
+// 첫 화면 우주인: 누르면 한 바퀴
+const ha=document.getElementById('heroAstro');
+ha.addEventListener('click',()=>replay(ha,'spin'));
+
+// 마우스·스크롤 따라 움직이기
+const hero=document.getElementById('hero'),hin=document.getElementById('hin'),prog=document.getElementById('prog'),s1=document.getElementById('s1'),s2=document.getElementById('s2'),jr=document.getElementById('journey');
+let mx=0,my=0,tick=false;
+if(!RM&&matchMedia('(hover:hover)').matches)addEventListener('mousemove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5;req()});
+function req(){if(!tick){tick=true;requestAnimationFrame(frame)}}
+function frame(){tick=false;const y=scrollY,H=innerHeight;
+  prog.style.transform='scaleX('+Math.min(1,y/Math.max(1,document.documentElement.scrollHeight-H))+')';
+  if(RM)return;
+  const k=Math.min(1,y/H);
+  ha.style.setProperty('--hx',(mx*50)+'px');
+  ha.style.setProperty('--hy',(my*30-y*.35)+'px');
+  ha.style.setProperty('--hr',(mx*10+k*25)+'deg');
+  ha.style.setProperty('--hs',(1-k*.25));
+  hin.style.transform='translateY('+(y*.22)+'px)';hin.style.opacity=Math.max(0,1-k*1.3);
+  s1.style.transform='translateY('+(y*.4)+'px)';
+  const r=jr.getBoundingClientRect();s2.style.transform='translateY('+(-r.top*.08)+'px)';
+}
+addEventListener('scroll',req,{passive:true});addEventListener('resize',req);frame();
+
+// 숫자 올라가기
+function count(el){const to=+el.dataset.to,dec=+(el.dataset.dec||0);const t0=performance.now();
+  (function f(t){const k=Math.min(1,(t-t0)/1400),v=to*(1-Math.pow(1-k,3));el.firstChild.nodeValue=v.toFixed(dec);if(k<1)requestAnimationFrame(f)})(t0)}
+const io2=new IntersectionObserver(es=>{es.forEach((e,j)=>{if(!e.isIntersecting)return;const n=e.target;setTimeout(()=>n.classList.add('in'),j*140);
+  n.querySelectorAll('[data-to]').forEach(count);io2.unobserve(n)})},{threshold:.4});
+document.querySelectorAll('.num').forEach(n=>io2.observe(n));
+// 미리보기용: 주소 끝이 #all 이면 모두 펼침
+if(location.hash==='#all'){document.querySelectorAll('.num').forEach(n=>{n.classList.add('in');n.querySelectorAll('[data-to]').forEach(c=>c.firstChild.nodeValue=(+c.dataset.to).toFixed(+(c.dataset.dec||0)))});io.disconnect();io2.disconnect();document.querySelectorAll('.ch').forEach(c=>c.classList.add('on'));document.querySelectorAll('.bar i').forEach(b=>b.style.width=b.dataset.w+'%')}
+</script>
+</body>
+</html>
